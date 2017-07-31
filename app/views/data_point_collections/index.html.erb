@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Data Point Collections</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @data_point_collections.each do |data_point_collection| %>
+      <tr>
+        <td><%= data_point_collection.title %></td>
+        <td><%= data_point_collection.description %></td>
+        <td><%= link_to 'Show', data_point_collection %></td>
+        <td><%= link_to 'Edit', edit_data_point_collection_path(data_point_collection) %></td>
+        <td><%= link_to 'Destroy', data_point_collection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Data Point Collection', new_data_point_collection_path %>
