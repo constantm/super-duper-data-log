@@ -6,8 +6,9 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Description</th>
       <th>Latest</th>
+      <th>Updated</th>
+      <th>Size</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,11 +17,17 @@
     <% @data_point_collections.each do |data_point_collection| %>
       <tr>
         <td><%= data_point_collection.title %></td>
-        <td><%= data_point_collection.description %></td>
         <td>
           <%= data_point_collection.latest_value %>
+        </td>
+        <td>
           <% if data_point_collection.data_points.present? %>
             <small><%= time_ago_in_words(data_point_collection.data_points.last.created_at) %> ago</small>
+          <% end %>
+        </td>
+        <td>
+          <% if data_point_collection.data_points.present? %>
+            <%= data_point_collection.data_points.size %>
           <% end %>
         </td>
         <td><%= link_to 'Show', data_point_collection %></td>
