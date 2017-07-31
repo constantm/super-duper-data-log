@@ -17,7 +17,12 @@
       <tr>
         <td><%= data_point_collection.title %></td>
         <td><%= data_point_collection.description %></td>
-        <td><%= data_point_collection.latest_value %></td>
+        <td>
+          <%= data_point_collection.latest_value %>
+          <% if data_point_collection.data_points.present? %>
+            <small><%= time_ago_in_words(data_point_collection.data_points.last.created_at) %> ago</small>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', data_point_collection %></td>
         <td><%= link_to 'Edit', edit_data_point_collection_path(data_point_collection) %></td>
         <td><%= link_to 'Destroy', data_point_collection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
