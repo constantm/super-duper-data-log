@@ -28,7 +28,7 @@ class DataPointsController < ApplicationController
   # POST /data_points
   # POST /data_points.json
   def create
-    @data_point_collection = DataPointCollection.find_or_create_by(title: data_point_params[:collection_title])
+    @data_point_collection = DataPointCollection.find_or_create_by(title: params[:collection_title])
     @data_point = DataPoint.new(data_point_params.merge(data_point_collection: @data_point_collection))
 
     respond_to do |format|
@@ -74,7 +74,7 @@ class DataPointsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def data_point_params
-      params.require(:data_point).permit(:collection_title, :value)
+      params.require(:data_point).permit(:value)
     end
 
     def check_key
