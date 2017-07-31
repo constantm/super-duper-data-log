@@ -11,6 +11,7 @@ default: &default
 
 development:
   <<: *default
+  database: datalog
   user: constantmeiring
   password:
 
