@@ -1,7 +1,9 @@
 class DataPointsController < ApplicationController
-  before_action :set_data_point, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: :create
+  skip_before_action :verify_authenticity_token, only: :create
+  before_action :set_data_point, only: [:show, :edit, :update, :destroy]
   before_action :check_key, only: :create # Super duper basic auth
+
 
   # GET /data_points
   # GET /data_points.json
